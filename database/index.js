@@ -1,5 +1,5 @@
 import sequelize from "./db-pg.js";
-import userModels from "./models/user-model.js";
+import User from "./models/user-model.js";
 
 //connect to db and sync models
 const syncModels = async () => {
@@ -13,4 +13,4 @@ const syncModels = async () => {
     }
 }
 
-export { syncModels, userModels };
+export { syncModels, User };
