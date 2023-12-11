@@ -1,8 +1,6 @@
 import express from "express";
-import syncModels from "./database/db.js";
 import UserRouter from "./routers/user-router.js";
-import dotenv from "dotenv";
-dotenv.config();
+import { syncModels } from "./database/index.js";
 
 const app = express();
 
