@@ -2,7 +2,7 @@ import { sequelize } from "../index.js";
 import { DataTypes, literal } from "sequelize";
 import jwt from "jsonwebtoken";
 // import { UUIDV4 } from "uuid";
-const User = sequelize.define("user", {
+const User = sequelize.define("User", {
     // Model attributes are defined here
     // userId: {
     //     type: DataTypes.INTEGER,

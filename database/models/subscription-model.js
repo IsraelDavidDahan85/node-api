@@ -3,7 +3,7 @@ import { DataTypes } from "sequelize";
 import User from "./user-model.js";
 import SubscriptionType from "./subscription-type-model.js";
 
-const Subscription = sequelize.define("subscription", {
+const Subscription = sequelize.define("Subscription", {
     // Model attributes are defined here
     // subscriptionId: {
     //     type: DataTypes.INTEGER,
