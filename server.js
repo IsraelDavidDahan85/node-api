@@ -1,5 +1,7 @@
 import express from "express";
-import UserRouter from "./routers/user-router.js";
+import UserRouter from "./routers/user-routes.js";
+import SubscriptionRouter from "./routers/subscription-routes.js";
+import SubscriptionTypeRouter from "./routers/subscription-type-routes.js";
 import { syncModels } from "./database/index.js";
 
 const app = express();
@@ -13,7 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 
 //routes
 app.use("/users", new UserRouter().getRouter());
-
+app.use("/subscriptions", new SubscriptionRouter().getRouter());
+app.use("/subscriptions-type", new SubscriptionTypeRouter().getRouter());
 
 app.get("/", (req, res) => {
     res.send("Hello World");

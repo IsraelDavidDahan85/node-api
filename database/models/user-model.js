@@ -1,8 +1,15 @@
-import sequelize from "../db-pg.js";
-import { DataTypes } from "sequelize";
-
-const User = sequelize.define("User", {
+import { sequelize } from "../index.js";
+import { DataTypes, literal } from "sequelize";
+import jwt from "jsonwebtoken";
+// import { UUIDV4 } from "uuid";
+const User = sequelize.define("user", {
     // Model attributes are defined here
+    // userId: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false,
+    //     primaryKey: true,
+    //     autoIncrement: true,
+    // },
     firstName: {
         type: DataTypes.STRING,
         allowNull: false
@@ -12,6 +19,16 @@ const User = sequelize.define("User", {
         // allowNull defaults to true
     },
     email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+        // allowNull defaults to true
+    },
+    address: {
+        type: DataTypes.STRING
+        // allowNull defaults to true
+    },
+    phone: {
         type: DataTypes.STRING
         // allowNull defaults to true
     },
@@ -19,7 +36,7 @@ const User = sequelize.define("User", {
         type: DataTypes.STRING
         // allowNull defaults to true
     },
-    phone: {
+    token: {
         type: DataTypes.STRING
         // allowNull defaults to true
     },
@@ -42,5 +59,30 @@ const User = sequelize.define("User", {
 }, {
     // Other model options go here
 });
+
+User.toJSON = function () {
+    const values = Object.assign({}, this.get());
+    delete values.password;
+    return values;
+}
+
+User.prototype.generateJWT = function () {
+    const today = new Date();
+    const expirationDate = new Date(today);
+    expirationDate.setDate(today.getDate() + 60);
+    return jwt.sign({
+        email: this.email,
+        id: this._id,
+        exp: parseInt(expirationDate.getTime() / 1000, 10),
+    }, 'secret');
+}
+
+User.prototype.toAuthJSON = function () {
+    return {
+        _id: this._id,
+        email: this.email,
+        token: this.generateJWT(),
+    };
+};
 
 export default User;

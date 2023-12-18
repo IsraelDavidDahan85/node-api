@@ -1,23 +1,23 @@
 version: '3'
  
 services:
-  db:
+  db-mysql:
     image: mysql:5.7
-    container_name: db
+    container_name: db-mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: nodeapi
       MYSQL_USER: admin
       MYSQL_PASSWORD: password
     ports:
-      - "6033:3306"
+      - "3306:3306"
     volumes:
       - dbdata:/var/lib/mysql
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: pma
     links:
-      - db
+      - db-mysql
     environment:
       PMA_HOST: db
       PMA_PORT: 3306

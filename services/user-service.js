@@ -1,4 +1,4 @@
-import User from "../database/index.js";
+import { User } from "../database/index.js";
 
 const getAll = async () => {
     try {
@@ -79,11 +79,45 @@ const deleteAll = async () => {
     }
 }
 
+const login = async ({email, password}) => {
+    try {
+        const user = await User.findOne({
+            where: {
+                email,
+                password
+            }
+        });
+        if (user) {
+            user.token = user.generateJWT();
+            await user.save();    
+            return user;
+        }
+        return null;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+const register = async (newUser) => {
+    try {
+        const user = await User.create(newUser);
+        if (user) {
+            user.token = user.generateJWT();
+            await user.save();
+            return user;
+        }
+        return null;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
 export default {
     getAll,
     getById,
     create,
     update,
     deleteById,
-    deleteAll
+    login,
+    register
 }
