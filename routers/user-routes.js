@@ -1,11 +1,12 @@
 import express from 'express';
 import userController from '../controllers/user-controller.js';
+import auth from '../middleware/auth.js';
 
 const router = express.Router();
 
 export default class UserRouter {
     constructor() {
-        router.get('/', userController.getAll);
+        router.get('/', auth, userController.getAll);
         router.get('/:id', userController.getById);
         router.post('/', userController.create);
         router.put('/:id', userController.update);

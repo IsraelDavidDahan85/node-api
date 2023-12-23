@@ -1,8 +1,8 @@
 version: "3.8"
 services:
-  db-pg:
+  db_pg:
     image: postgres
-    container_name: db-pg
+    container_name: db_pg
     restart: always
     ports:
       - "5432:5432"

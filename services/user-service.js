@@ -2,7 +2,7 @@ import { User } from "../database/index.js";
 
 const getAll = async () => {
     try {
-        const users = await User.findAll();
+        const users = await User.findAll(); // SELECT * FROM users; 
         if (users.length > 0) {
             return users;
         }
@@ -76,7 +76,7 @@ const deleteAll = async () => {
         return null;
     } catch (error) {
         throw new Error(error);
-    }
+    }destroy
 }
 
 const login = async ({email, password}) => {
@@ -86,7 +86,7 @@ const login = async ({email, password}) => {
                 email,
                 password
             }
-        });
+        }); // SELECT * FROM users WHERE email = email AND password = password;
         if (user) {
             user.token = user.generateJWT();
             await user.save();    
