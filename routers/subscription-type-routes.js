@@ -1,5 +1,6 @@
 import express from 'express';
 import SubscriptionTypeController from '../controllers/subscription-type-controller.js';
+import auth from '../middlewares/auth.js';
 
 const router = express.Router();
 

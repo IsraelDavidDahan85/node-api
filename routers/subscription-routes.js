@@ -5,7 +5,7 @@ const router = express.Router();
 
 export default class SubscriptionRouter {
     constructor() {
-        router.get('/', auth, SubscriptionController.getAll);
+        router.get('/', SubscriptionController.getAll);
         router.get('/:id', SubscriptionController.getById);
         router.post('/', SubscriptionController.create);
         router.put('/:id', SubscriptionController.update);

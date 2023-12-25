@@ -6,10 +6,10 @@ const router = express.Router();
 
 export default class UserRouter {
     constructor() {
-        router.get('/', auth, userController.getAll);
-        router.get('/:id', userController.getById);
-        router.post('/', userController.create);
-        router.put('/:id', userController.update);
+        router.get('/', userController.getAll);
+        router.get('/:id',  userController.getById);
+        router.post('/',  userController.create);
+        router.put('/:id',  userController.update);
         router.delete('/:id', userController.delete);
         router.post('/login', userController.login);
         router.post('/register', userController.register);

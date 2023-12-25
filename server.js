@@ -24,7 +24,7 @@ app.use("/subscriptions", new SubscriptionRouter().getRouter());
 app.use("/subscriptions-type", new SubscriptionTypeRouter().getRouter());
 
 app.get("/", (req, res) => {
-    res.send("Hello World");
+    res.send({msg: "Hello World"});
     }
 );
 
