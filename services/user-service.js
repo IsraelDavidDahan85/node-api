@@ -112,6 +112,18 @@ const register = async (newUser) => {
     }
 }
 
+const me = async (user) => {
+    try {
+        if (user) {
+            return user;
+        }
+        return null;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+
 export default {
     getAll,
     getById,
@@ -119,5 +131,6 @@ export default {
     update,
     deleteById,
     login,
-    register
+    register,
+    me
 }

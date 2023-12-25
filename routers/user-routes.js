@@ -6,13 +6,14 @@ const router = express.Router();
 
 export default class UserRouter {
     constructor() {
-        router.get('/', userController.getAll);
-        router.get('/:id',  userController.getById);
-        router.post('/',  userController.create);
-        router.put('/:id',  userController.update);
-        router.delete('/:id', userController.delete);
+        router.get('/', auth, userController.getAll);
+        router.get('/:id', auth,  userController.getById);
+        router.post('/', auth,  userController.create);
+        router.put('/:id', auth,  userController.update);
+        router.delete('/:id', auth, userController.delete);
         router.post('/login', userController.login);
         router.post('/register', userController.register);
+        router.post('/me', auth, userController.me);
     }
 
     getRouter() {

@@ -1,5 +1,5 @@
-// import sequelize from "./db-postgres.js";
-import sequelize from "./db-mysql.js";
+import sequelize from "./db-postgres.js";
+// import sequelize from "./db-mysql.js";
 import User from "./models/user-model.js";
 import Subscription from "./models/subscription-model.js";
 import SubscriptionType from "./models/subscription-type-model.js";
