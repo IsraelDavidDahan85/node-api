@@ -16,7 +16,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //cors
-app.use(cors());
+var corsOptions = {
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204
+  }  
+  
+app.use(cors(corsOptions));
 
 //routes
 app.use("/users", new UserRouter().getRouter());
