@@ -22,6 +22,12 @@ services:
       PGADMIN_DEFAULT_PASSWORD: password
     volumes:
       - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - node-api
+
+networks:
+  node-api:
+    driver: bridge
 
 volumes:
   local_pgdata:
