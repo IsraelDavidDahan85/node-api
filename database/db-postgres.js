@@ -1,15 +1,14 @@
 import { Sequelize } from "sequelize";
-import dotenv from "dotenv";
-dotenv.config();
+import dbConfig from "../config/db-config.js";
 
 // Option 2: Passing parameters separately (other dialects)
 const sequelize = new Sequelize(
     {
-        username: process.env.DB_USER,
-        password: process.env.DB_PASS,
-        database: process.env.DB_NAME,
-        host: process.env.DB_HOST,
-        port: process.env.DB_PORT,
+        username: dbConfig.USER,
+        password: dbConfig.PASSWORD,
+        host: dbConfig.HOST,
+        port: dbConfig.PORT,
+        database: dbConfig.DB,
         dialect: "postgres",
     }
 );

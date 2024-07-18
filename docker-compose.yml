@@ -1,0 +1,17 @@
+services:
+  node-api:
+    image: node-api
+    container_name: node-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_USER=postgres
+      - DB_PASS=password
+      - DB_HOST=db_pg
+      - DB_PORT=5432
+      - DB_NAME=nodejs
+      - PORT=3000

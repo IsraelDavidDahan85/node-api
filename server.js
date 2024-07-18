@@ -6,6 +6,7 @@ import SubscriptionRouter from "./routers/subscription-routes.js";
 import SubscriptionTypeRouter from "./routers/subscription-type-routes.js";
 import { syncModels } from "./database/index.js";
 
+const port = process.env.PORT || 3000;
 const app = express();
 
 //connect to db and sync models
@@ -35,8 +36,8 @@ app.get("/", (req, res) => {
     }
 );
 
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
     }
 );
 
