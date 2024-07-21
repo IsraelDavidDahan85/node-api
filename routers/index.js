@@ -5,11 +5,11 @@ import { Router } from "express";
 
 const router = Router();
 
-router.get("/ready", (req, res) => {
+router.get("/healthz", (req, res) => {
     res.status(200).json({ status: "ok" });
 });
 
-router.get("/live", (req, res) => {
+router.get("/readyz", (req, res) => {
     res.status(200).json({ status: "ok" });
 });
 
