@@ -1,9 +1,7 @@
 import express from "express";
 import cors from "cors";
 
-import UserRouter from "./routers/user-routes.js";
-import SubscriptionRouter from "./routers/subscription-routes.js";
-import SubscriptionTypeRouter from "./routers/subscription-type-routes.js";
+import router from "./routers/index.js";
 import { syncModels } from "./database/index.js";
 
 const port = process.env.PORT || 3000;
@@ -27,9 +25,7 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 //routes
-app.use("/users", new UserRouter().getRouter());
-app.use("/subscriptions", new SubscriptionRouter().getRouter());
-app.use("/subscriptions-type", new SubscriptionTypeRouter().getRouter());
+app.use("/api", router);
 
 app.get("/", (req, res) => {
     res.send({msg: "Hello World"});
